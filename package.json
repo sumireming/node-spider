@@ -1,0 +1,26 @@
+{
+  "name": "spider",
+  "version": "1.0.0",
+  "description": "node spider script",
+  "main": "index.js",
+  "dependencies": {
+    "request": "^2.83.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start" : "node index.js > test.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumireming/node-spider.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "sumireming",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sumireming/node-spider/issues"
+  },
+  "homepage": "https://github.com/sumireming/node-spider#readme"
+}
