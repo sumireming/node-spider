@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Circular Slides - impress.js</title>
+<style>
+body {
+  background-image: url(//wmh.github.io/circular-slides-generator/static/img/noise.png);
+}
+.step {
+    position: relative;
+    padding: 40px;
+    margin: 0 auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    -ms-box-sizing:     border-box;
+    -o-box-sizing:      border-box;
+    box-sizing:         border-box;
+    font-family: 'PT Serif', georgia, serif;
+    font-size: 48px;
+    line-height: 1.5;
+}
+.slide {
+  display: block;
+  width: 1160px;
+  height: 720px;
+  padding: 120px 60px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  color: rgb(102, 102, 102);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+.credits, .credits h2 {
+  padding-top: 0;
+}
+</style>
+</head>
+<body>
+<div id="impress">
+<div class="step slide" data-x="-580" data-y="-360" data-rotate="0" data-scale="1.314913793103448">
+  <h2>Node爬虫介绍</h2>
+  <p style="text-align: right;">by 樊明慧</p>
+</div>
+<div class="step slide" data-x="1599" data-y="-359" data-rotate="0" data-scale="1">
+  <h3>一个例子</h3>
+</div>
+<div class="step slide" data-x="1410" data-y="526" data-rotate="24" data-scale="1">
+  <p>
+    获取 <br />
+    线上<a target="_blank" href="http://z.qyer.com/deal/66927/">商品详情页</a>的页面数据 <br />
+    （ep.js）
+  </p>
+</div>
+<div class="step slide" data-x="878" data-y="1259" data-rotate="48" data-scale="1">
+  <h3>一些知识</h3>
+  <ul>
+    <li>
+      <a target="_blank" href="http://nodejs.cn/api/http.html">http模块</a>
+    </li>
+    <li>
+      <a target="_blank" href="https://github.com/request/request">request库</a>
+    </li>
+    <li>
+      <a target="_blank" href="http://nodejs.cn/api/url.html">url模块</a>
+    </li>
+  </ul>
+</div>
+<div class="step slide" data-x="93" data-y="1712" data-rotate="72" data-scale="1">
+  <h3>另一个例子</h3>
+</div>
+<div class="step slide" data-x="-807" data-y="1807" data-rotate="96" data-scale="1">
+    <p>
+    <a target="_blank" href="http://daole.qyer.com/cphxhh">专题页</a>的开发  <br />
+    需要获取一些论坛帖子数据和产品数据 <br />
+    (ep2.js, ep3.js)
+  </p>
+</div>
+<div class="step slide" data-x="-1669" data-y="1527" data-rotate="120" data-scale="1">
+  <h3>Node解析HTML</h3>
+  <p>
+    <a target="_blank" href="https://github.com/cheeriojs/cheerio">cheerio</a> <br />
+    <a target="_blank" href="https://github.com/tmpvar/jsdom">jsdom</a> <br />
+  </p>
+</div>
+<div class="step slide" data-x="-2342" data-y="920" data-rotate="144" data-scale="1">
+  <h3>网络爬虫的定义</h3>
+</div>
+<div class="step slide" data-x="-2711" data-y="93" data-rotate="168" data-scale="1">
+  <p style="font-size: 40px;">
+    网络爬虫，也叫网络蜘蛛（spider），是一种用来自动浏览万维网的网络机器人。 <br />
+    其目的一般为编纂网络索引。 <br />
+    网络搜索引擎等站点通过爬虫软件更新自身的站内容或其对其他网站的索引。<br />
+    网络爬虫可以将自己所访问的页面保存下来，以便搜索引擎事后生成索引供用户搜索。
+  </p>
+</div>
+<div class="step slide" data-x="-2711" data-y="-813" data-rotate="192" data-scale="1">
+  <img style="width: 80%; display: block; margin: 0 auto;" src="spider.png" />
+</div>
+<div class="step slide" data-x="-2342" data-y="-1640" data-rotate="216" data-scale="1">
+  <h3>几个关键点</h3>
+  <ul>
+    <li>获取url列表</li>
+    <li>下载网页资源</li>
+    <li>解析资源得到有用的数据</li>
+  </ul>
+</div>
+<div class="step slide" data-x="-1669" data-y="-2247" data-rotate="240" data-scale="1">
+    <h3>一个小实践</h3>
+  <p>Nodejs抓取电影资源链接</p>
+</div>
+<div class="step slide" data-x="-807" data-y="-2527" data-rotate="264" data-scale="1">
+  <h3>讨论、提问环节</h3>
+</div>
+<div class="step slide" data-x="93" data-y="-2432" data-rotate="288" data-scale="1">
+  <h2>谢谢</h2>
+</div>
+<!-- <div class="step slide" data-x="878" data-y="-1979" data-rotate="312" data-scale="1">
+  
+</div>
+ --><div class="step slide credits" data-x="1410" data-y="-1246" data-rotate="336" data-scale="1">
+    <h2>Credits</h2>
+    <ul>
+      <li>
+        <a href="http://bartaz.github.io/impress.js" target="_blank">impress.js</a> - Bartek Szopka
+      </li>
+      <li>
+        <a href="http://wmh.github.io/circular-slides-generator" target="_blank">Circular Slides Generator</a> - Hunter Wu
+      </li>
+    </ul>
+  </div>
+<div class="step" data-x="0" data-y="0" data-scale="8"></div>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.js"></script>
+<script>impress().init()</script>
+</body>
+</html>
