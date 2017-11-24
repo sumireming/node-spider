@@ -2,7 +2,7 @@ const request = require('request').defaults({maxRedirects:100})
 const cheerio = require('cheerio')
 const XLSX = require('xlsx')
 
-let homepageUrl = 'http://www.yinfans.com/'
+let homepageUrl = 'http://gaoqing.la/720p'
 let _Result = []
 
 
@@ -24,7 +24,7 @@ new Promise(resolve => {
 		let cataloglist = data
 		let catalogPromise = []
 		//  控制目录表
-		for(let i = 1; i<2; i++) {
+		for(let i = 0; i<5; i++) {
 			catalogPromise.push(getUrlList(cataloglist, i))
 		}
 
@@ -35,7 +35,7 @@ new Promise(resolve => {
 		new Promise(resolve => {
 			let postUrlList = Array.prototype.concat.apply([], data)
 			let postPromise = []
-			for(let i = 0; i<10; i++) {
+			for(let i = 0; i<postUrlList.length; i++) {
 				postPromise.push(getDownloadUrl(postUrlList, i))
 			}
 			resolve(Promise.all(postPromise))
@@ -44,7 +44,7 @@ new Promise(resolve => {
 			_Result = Array.prototype.concat.apply([], data)
 			console.log('一共' + _Result.length + '条')
 			process.stdout.write(`表格文件生成中... \n`)
-			output('result', ['name', 'filename', 'url', 'postId', 'doubanId'], _Result)
+			output('result', ['name', 'year', 'filename', 'url', 'postId', 'doubanId'], _Result)
 		})
 
 	})
@@ -65,23 +65,25 @@ function getDownloadUrl(postUrlList, index) {
 						try {
 							let result = []
 							let $ = cheerio.load(body, {decodeEntities: false})
-							if($('.info_category a').attr('href').search('www.yinfans.com/topic/special') === -1) {
-								$('#post_content a').each((index, elem) => {
-									let postContent = $('#post_content').text()
-									let movieName = $('#content .article_container h1').text().replace(/^([\S]+)*\s[\s\S]*/g, '$1')
-									let re = /[\s\S]*\movie.douban.com\/subject\/(\d+)[\s\S]*/.exec(postContent)
-									let doubanId = re ? re[1] : ''
-									if($(elem).attr('href') && $(elem).attr('href').search(/^magnet\:/) !== -1) {
-										result.push({
-											name: movieName,
-											filename: $(elem).html(),
-											url: $(elem).attr('href'),
-											postId: postUrlList[i].match(/\d+/)[0],
-											doubanId: doubanId
-										})
-									}
-								})
-							}
+							$('#post_content a').each((index, elem) => {
+								let titleArr = $('#content .article_container h1').text().split(/\s+/)
+								let postContent = $('#post_content').text()
+								let movieName = titleArr[1]
+								let movieYear = titleArr[0]
+								let re = /[\s\S]*\movie.douban.com\/subject\/(\d+)[\s\S]*/.exec(postContent)
+								let doubanId = re ? re[1] : ''
+								if($(elem).attr('href') && $(elem).attr('href').search(/^magnet\:/) !== -1) {
+									result.push({
+										name: movieName,
+										year: movieYear,
+										filename: $(elem).html(),
+										url: $(elem).attr('href'),
+										postId: '',
+										doubanId: doubanId
+									})
+								}
+							})
+							process.stdout.write('success.... \n')
 							resolve(result)
 						}catch(err) {
 							process.stdout.write(err + '\n')
@@ -94,7 +96,7 @@ function getDownloadUrl(postUrlList, index) {
 					}
 				})
 
-			}, i * 3000)
+			}, i * 5000)
 		})(index)
 
 		
@@ -119,7 +121,7 @@ function getUrlList(cataloglist, index) {
 					}
 					
 				})
-			}, i * 2000)
+			}, i * 5000)
 		})(index)
 		
 	})
@@ -130,11 +132,12 @@ function getCatalog(html) {
 	let catalog = []
 	let $ = cheerio.load(html)
 	let lastPage = $('.pagination a.extend').attr('href')
-	let re = new RegExp('(\\d+)','ig')
+	let re = new RegExp('(\\d+)$','ig')
 	re.exec(lastPage)
 	let lastPageNum = RegExp.$1
 	for (let i = 1; i<lastPageNum; i++) {
-		catalog.push(lastPage.replace(/\d+/, i))
+		catalog.push(lastPage.replace(/\d+$/, i))
+
 	}
 
 	return catalog

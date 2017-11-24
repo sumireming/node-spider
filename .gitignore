@@ -1,0 +1,8 @@
+.DS_Store
+.deploy*
+/views/st_res
+*.xlsx
+test
+test.json
+node_modules/
+package-lock.json
